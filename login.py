@@ -15,6 +15,8 @@ def getToken():
     }
     result = session_requests.post(LOGIN_URL, data=payload)
     re_token=re.match('.*?:\"(.*?)\"}',result.json()["datas"])
+    with open('a.txt','w') as fp:
+        fp.write(re_token.group(1))
     return re_token.group(1)
 
 if __name__ == '__main__':
